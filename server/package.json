@@ -14,14 +14,19 @@
   },
   "dependencies": {
     "@clerk/express": "^1.4.4",
+    "@google/genai": "^0.8.0",
+    "@modelcontextprotocol/sdk": "^1.9.0",
+    "@pinecone-database/pinecone": "^5.1.1",
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
+    "mime": "^4.0.7",
     "nodemon": "^3.1.9",
     "pino": "^9.6.0",
     "pino-http": "^10.4.0",
     "swagger-jsdoc": "^6.2.8",
-    "swagger-ui-express": "^5.0.1"
+    "swagger-ui-express": "^5.0.1",
+    "zod": "^3.24.2"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",
