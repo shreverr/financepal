@@ -1,7 +1,12 @@
-import { embedMany } from 'ai';
+import { embed, embedMany } from 'ai';
 import { llmClient } from '../LLMClient';
+import { cosineDistance, desc, gt, sql } from 'drizzle-orm';
+import { embeddings } from '../../schema/embeddings';
+import db from '../../config/database';
 
-const embeddingModel = llmClient.textEmbeddingModel('text-embedding-004');
+const embeddingModel = llmClient.textEmbeddingModel('gemini-embedding-exp-03-07', {
+  outputDimensionality: 1536
+});
 
 const generateChunks = (input: string): string[] => {
   return input
@@ -19,4 +24,28 @@ export const generateEmbeddings = async (
     values: chunks,
   });
   return embeddings.map((e, i) => ({ content: chunks[i], embedding: e }));
+};
+
+export const generateEmbedding = async (value: string): Promise<number[]> => {
+  const input = value.replace(/\\n/g, ' ');
+  const { embedding } = await embed({
+    model: embeddingModel,
+    value: input,
+  });
+  return embedding;
+};
+
+export const findRelevantContent = async (userQuery: string) => {
+  const userQueryEmbedded = await generateEmbedding(userQuery);
+  const similarity = sql<number>`1 - (${cosineDistance(
+    embeddings.embedding,
+    userQueryEmbedded,
+  )})`;
+  const similarGuides = await db
+    .select({ name: embeddings.content, similarity })
+    .from(embeddings)
+    .where(gt(similarity, 0.5))
+    .orderBy(t => desc(t.similarity))
+    .limit(4);
+  return similarGuides;
 };

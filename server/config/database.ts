@@ -1,4 +1,4 @@
-import { drizzle } from 'drizzle-orm/neon-http';
+import { drizzle } from 'drizzle-orm/node-postgres'
 import { AppError } from '../lib/appError';
 
 const dbURL: string | undefined = process.env.DATABASE_URL
