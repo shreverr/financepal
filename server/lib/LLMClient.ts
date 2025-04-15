@@ -1,5 +1,5 @@
-import { GoogleGenAI } from '@google/genai';
 import { AppError } from './appError';
+import { createGoogleGenerativeAI, google } from '@ai-sdk/google';
 
 const apiKey = process.env.GEMINI_API_KEY;
 
@@ -11,9 +11,12 @@ if (!apiKey) {
     false,
   )
 } 
-
-const ai = new GoogleGenAI({
+export const llmClient = createGoogleGenerativeAI({
   apiKey: apiKey,
 });
 
-export default ai
+export const model = llmClient('gemini-2.0-flash', {
+  safetySettings: [
+    { category: 'HARM_CATEGORY_SEXUALLY_EXPLICIT', threshold: 'BLOCK_ONLY_HIGH' },
+  ],
+});

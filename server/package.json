@@ -13,19 +13,24 @@
     "lint": "eslint . --ext .ts"
   },
   "dependencies": {
+    "@ai-sdk/google": "^1.2.11",
     "@clerk/express": "^1.4.4",
     "@google/genai": "^0.8.0",
     "@modelcontextprotocol/sdk": "^1.9.0",
-    "@pinecone-database/pinecone": "^5.1.1",
+    "ai": "^4.3.7",
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
+    "drizzle-orm": "^0.42.0",
+    "drizzle-zod": "^0.7.1",
     "express": "^5.1.0",
     "mime": "^4.0.7",
     "nodemon": "^3.1.9",
     "pino": "^9.6.0",
     "pino-http": "^10.4.0",
+    "postgres": "^3.4.5",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1",
+    "uuid": "^11.1.0",
     "zod": "^3.24.2"
   },
   "devDependencies": {
@@ -35,8 +40,10 @@
     "@types/pino-http": "^5.8.4",
     "@types/swagger-jsdoc": "^6.0.4",
     "@types/swagger-ui-express": "^4.1.8",
+    "drizzle-kit": "^0.31.0",
     "install": "^0.13.0",
     "ts-node": "^10.9.2",
+    "tsx": "^4.19.3",
     "typescript": "^5.8.3"
   }
 }
