@@ -3,6 +3,7 @@
 import { useChat } from '@ai-sdk/react';
 import { ChevronRight, PieChart, Shield, TrendingUp } from 'lucide-react';
 import Link from 'next/link';
+import { AuroraText } from '@/components/magicui/aurora-text';
 
 export default function LandingPage() {
   return (
@@ -26,8 +27,15 @@ export default function LandingPage() {
                 </span>
               </a>
             </div>
-            <h1 className="mt-10 text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl">
-              Smart Retirement Planning with AI
+            <h1 className="mt-10 text-4xl font-bold tracking-tight sm:text-6xl">
+              <AuroraText 
+                colors={["#0284c7", "#0ea5e9", "#38bdf8", "#7dd3fc"]} 
+                className="font-extrabold"
+                speed={1.5}
+              >
+                Smart Retirement Planning
+              </AuroraText>
+              <span className="text-gray-900 dark:text-white block mt-2">powered by AI</span>
             </h1>
             <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
               Get personalized investment advice that remembers your goals and adapts to market changes. Plan your retirement with confidence using our AI-powered financial advisor.
@@ -35,11 +43,11 @@ export default function LandingPage() {
             <div className="mt-10 flex items-center gap-x-6">
               <Link
                 href="/chat"
-                className="rounded-md bg-blue-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+                className="rounded-md bg-blue-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-all duration-200 ease-in-out hover:scale-105"
               >
                 Start Planning Now
               </Link>
-              <Link href="#features" className="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-100">
+              <Link href="#features" className="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-100 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200">
                 Learn more <span aria-hidden="true">→</span>
               </Link>
             </div>
@@ -51,7 +59,14 @@ export default function LandingPage() {
       <div id="features" className="py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl lg:text-center">
-            <h2 className="text-base font-semibold leading-7 text-blue-600 dark:text-blue-400">Smarter Planning</h2>
+            <h2 className="text-base font-semibold leading-7">
+              <AuroraText 
+                colors={["#0284c7", "#0ea5e9", "#38bdf8", "#7dd3fc"]}
+                speed={0.7}
+              >
+                Smarter Planning
+              </AuroraText>
+            </h2>
             <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
               Everything you need for retirement planning
             </p>
@@ -77,8 +92,16 @@ export default function LandingPage() {
                   description: 'Our AI remembers your preferences and past interactions to provide consistently relevant advice across conversations.',
                   icon: Shield,
                 },
-              ].map((feature) => (
-                <div key={feature.title} className="relative glass-effect rounded-2xl p-6">
+              ].map((feature, index) => (
+                <div 
+                  key={feature.title} 
+                  className="relative glass-effect rounded-2xl p-6 transition-all duration-300 ease-in-out hover:translate-y-[-4px] hover:shadow-lg"
+                  style={{ 
+                    animationDelay: `${index * 150}ms`,
+                    opacity: 0,
+                    animation: 'fadeInUp 0.5s ease forwards'
+                  }}
+                >
                   <dt className="flex items-center gap-x-3 text-base font-semibold leading-7 text-gray-900 dark:text-white">
                     <feature.icon className="h-5 w-5 flex-none text-blue-600 dark:text-blue-400" />
                     {feature.title}
