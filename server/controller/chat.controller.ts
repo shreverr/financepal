@@ -7,7 +7,7 @@ export const sendChat: RequestHandler = async (
   next: NextFunction
 ) => {
   try {
-    const response = chatService.getChatResponse(req.body.message)
+    const response = chatService.getChatResponse(req.body.messages)
 
     response.pipeDataStreamToResponse(res, {
       getErrorMessage: (error: unknown) => { throw error },
