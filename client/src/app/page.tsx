@@ -43,7 +43,7 @@ export default function LandingPage() {
             <div className="mt-10 flex items-center gap-x-6">
               <Link
                 href="/chat"
-                className="rounded-md bg-blue-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-all duration-200 ease-in-out hover:scale-105"
+                className="rounded-md bg-blue-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-all duration-200 ease-in-out hover:scale-105"
               >
                 Start Planning Now
               </Link>
